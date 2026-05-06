@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Publication</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f2ec;
+    --bg-alt: #edeae2;
+    --ink: #1a1710;
+    --ink-soft: #4a4740;
+    --ink-muted: #8a857a;
+    --accent: #2c4a7c;
+    --accent-warm: #8b3a2a;
+    --rule: #c8c4bb;
+    --card-bg: #faf8f4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    line-height: 1.75;
+    font-size: 17px;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    height: 52px;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: var(--ink-soft);
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    font-family: 'Arial Black', sans-serif;
+    font-weight: 900;
+    transition: color .2s;
+  }
+  nav a:hover { color: var(--accent); }
+  nav .logo {
+    margin-right: auto;
+    color: var(--ink);
+    font-size: 13px;
+    letter-spacing: .05em;
+  }
+
+  /* SECTIONS */
+  section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 80px 5%;
+  }
+
+  .section-number {
+    font-family: 'Arial Black', sans-serif;
+    font-weight: 900;
+    font-size: 11px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 10px;
+  }
+
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 0;
+  }
+
+  /* SECTION 1 — TITLE & ABSTRACT */
+  #hero {
+    padding-top: 100px;
+    padding-bottom: 80px;
+    text-align: center;
+  }
+
+  #hero .journal-tag {
+    display: inline-block;
+    font-family: 'Arial Black', sans-serif;
+    font-weight: 900;
+    font-size: 10px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 4px 14px;
+    border-radius: 2px;
+    margin-bottom: 36px;
+  }
+
+  #hero h1 {
+    font-family: 'Arial Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    line-height: 1.12;
+    letter-spacing: -.02em;
+    color: var(--ink);
+    margin-bottom: 28px;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #hero .byline {
+    font-size: 13px;
+    color: var(--ink-muted);
+    letter-spacing: .05em;
+    margin-bottom: 56px;
+    font-style: italic;
+  }
+
+  .abstract-box {
+    background: var(--card-bg);
+    border-left: 3px solid var(--accent);
+    padding: 32px 40px;
+    text-align: left;
+    border-radius: 2px;
+  }
+
+  .abstract-box .label {
+    font-family: 'Arial Black', sans-serif;
+    font-weight: 900;
+    font-size: 10px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .abstract-box p {
+    color: var(--ink-soft);
+    font-size: 16px;
+    line-height: 1.85;
+  }
+
+  .keywords {
+    margin-top: 18px;
+    font-size: 13px;
+    color: var(--ink-muted);
+  }
+
+  .keywords span {
+    font-family: 'Arial Black', sans-serif;
+    font-weight: 900;
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-right: 6px;
+  }
+
+  /* SECTION 2 — FINDINGS */
+  #findings h2 {
+    font-family: 'Arial Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    letter-spacing: -.02em;
+    color: var(--ink);
+    margin-bottom: 40px;
+  }
+
+  .findings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .finding-card {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 28px 28px 24px;
+    position: relative;
+    transition: box-shadow .25s, transform .25s;
+  }
+
+  .finding-card:hover {
+    box-shadow: 0 6px 28px rgba(0,0,0,.08);
+    transform: translateY(-3px);
+  }
+
+  .finding-card .num {
+    font-family: 'Arial Black', sans-serif;
+    font-weight: 900;
+    font-size: 42px;
+    color: var(--accent);
+    opacity: .18;
+    position: absolute;
+    top: 16px;
+    right: 22px;
+    line-height: 1;
+  }
+
+  .finding-card h3 {
+    font-family: 'Arial Black', sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--accent-warm);
+    margin-bottom: 10px;
+  }
+
+  .finding-card p {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.75;
+  }
+
+  .findings-summary {
+    background: var(--accent);
+    color: #fff;
+    border-radius: 4px;
+    padding: 30px 36px;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .findings-summary strong {
+    font-family: 'Arial Black', sans-serif;
+    font-weight: 900;
+    font-size: 12px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+    opacity: .75;
+  }
+
+  /* SECTION 3 — TEAM */
+  #team h2 {
+    font-family: 'Arial Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    letter-spacing: -.02em;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  #team .team-intro {
+    color: var(--ink-muted);
+    font-size: 15px;
+    margin-bottom: 44px;
+    font-style: italic;
+  }
+
+  .team-role-label {
+    font-family: 'Arial Black', sans-serif;
+    font-weight: 900;
+    font-size: 10px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .faculty-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    margin-bottom: 40px;
+  }
+
+  .student-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    max-width: 440px;
+  }
+
+  .member-card {
+    text-align: center;
+  }
+
+  .member-photo {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 14px;
+    display: block;
+    border: 2px solid var(--rule);
+    background: var(--bg-alt);
+    overflow: hidden;
+  }
+
+  .member-photo svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .member-name {
+    font-family: 'Arial Black', sans-serif;
+    font-weight: 900;
+    font-size: 13px;
+    letter-spacing: .04em;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .member-title {
+    font-size: 12px;
+    color: var(--ink-muted);
+    font-style: italic;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .member-link {
+    display: inline-block;
+    font-family: 'Arial Black', sans-serif;
+    font-weight: 900;
+    font-size: 9px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color .2s;
+  }
+  .member-link:hover { border-bottom-color: var(--accent); }
+
+  /* SECTION 4 — FUNDING */
+  #funding {
+    background: var(--bg-alt);
+    max-width: none;
+    padding: 70px 5%;
+  }
+
+  #funding .inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  #funding h2 {
+    font-family: 'Arial Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    letter-spacing: -.01em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+
+  .funding-body {
+    font-size: 15.5px;
+    color: var(--ink-soft);
+    line-height: 1.85;
+    margin-bottom: 24px;
+  }
+
+  .grant-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 26px;
+  }
+
+  .grant-pill {
+    font-family: 'Arial Black', sans-serif;
+    font-weight: 900;
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    color: var(--ink-soft);
+    padding: 6px 16px;
+    border-radius: 999px;
+  }
+
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,.35);
+    text-align: center;
+    padding: 22px;
+    font-size: 12px;
+    font-family: 'Arial Black', sans-serif;
+    font-weight: 900;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 680px) {
+    .findings-grid { grid-template-columns: 1fr; }
+    .faculty-grid { grid-template-columns: repeat(2, 1fr); }
+    .student-grid { grid-template-columns: repeat(2, 1fr); max-width: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#">GenAI in Higher Education</a>
+  <a href="#hero">Abstract</a>
+  <a href="#findings">Findings</a>
+  <a href="#team">Team</a>
+  <a href="#funding">Funding</a>
+</nav>
+
+<!-- SECTION 1: TITLE & ABSTRACT -->
+<section id="hero">
+  <div class="journal-tag">Impact of GenAI on Higher Education</div>
+  <h1>A Novel Educational Assessment Framework for Enhancing Critical Thinking and Self-Efficacy via Generative AI Integration</h1>
+  <p class="byline">Funded by Google.com via EMPIRE AI</p>
+
+  <div class="abstract-box">
+    <div class="label">Abstract</div>
+    <p>
+      The multidisciplinary team at Rensselaer Polytechnic Institute (RPI) is working to establish a novel and effective design instrument to assess the impact of generative AI (genAI) technologies on promoting learning and assisting students and faculty in upper-level undergraduate courses. This work aims to deploy a mixed-methods approach by utilizing approaches including surveys, large-scale data analysis to identify the nuances in student learning when relying on genAI. Our goal is to identify how students interact and get influenced by genAI in the context of academic self-efficacy, academic stress, and performance expectations. 
+    </p>
+    <div class="keywords">
+      <span>Keywords:</span> Generative AI &nbsp;;&nbsp; Quantitative Investigation &nbsp;;&nbsp; Survey Instrument &nbsp;;&nbsp; Self-efficacy &nbsp;;&nbsp; Natural Language Processing
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- SECTION 2: FINDINGS -->
+<section id="findings">
+  <div class="section-number">02 — Key Findings</div>
+  <h2>What the Data Revealed</h2>
+
+  <div class="findings-grid">
+    <div class="finding-card">
+      <div class="num">01</div>
+      <h3>Finding-1</h3>
+      <p>Coming soon.. </p>
+    </div>
+    <div class="finding-card">
+      <div class="num">02</div>
+      <h3>Finding-2</h3>
+      <p>Coming soon..</p>
+    </div>
+    <div class="finding-card">
+      <div class="num">03</div>
+      <h3>Finding-3</h3>
+      <p>Coming soon..</p>
+    </div>
+    <div class="finding-card">
+      <div class="num">04</div>
+      <h3>Finding-4</h3>
+      <p>Coming soon..</p>
+    </div>
+  </div>
+
+  <div class="findings-summary">
+    <strong>Summary Conclusion</strong>
+    In the works.. 
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- SECTION 3: TEAM -->
+<section id="team">
+  <div class="section-number">03 — Research Team</div>
+  <h2>The People Behind the Work</h2>
+  <p class="team-intro">This project was a collaborative effort spanning multiple schools at Renssealer Polytechnic Institute (RPI).</p>
+
+  <div class="team-role-label">Faculty Investigators</div>
+  <div class="faculty-grid">
+    <!-- Faculty 1 -->
+    <div class="member-card">
+      <div class="member-photo">
+        <svg viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
+          <rect width="88" height="88" fill="#ddd6cc"/>
+          <circle cx="44" cy="32" r="16" fill="#a8a099"/>
+          <ellipse cx="44" cy="74" rx="24" ry="18" fill="#a8a099"/>
+        </svg>
+      </div>
+      <div class="member-name">Dr. Lydia Manikonda</div>
+      <div class="member-title">Assistant Professor, Lally School of Management</div>
+      <a class="member-link" href="https://faculty.rpi.edu/lydia-manikonda" target="_blank">Profile</a>
+    </div>
+    <!-- Faculty 2 -->
+    <div class="member-card">
+      <div class="member-photo">
+        <svg viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
+          <rect width="88" height="88" fill="#d6dde8"/>
+          <circle cx="44" cy="32" r="16" fill="#8a9db5"/>
+          <ellipse cx="44" cy="74" rx="24" ry="18" fill="#8a9db5"/>
+        </svg>
+      </div>
+      <div class="member-name">Dr. Mei Si</div>
+      <div class="member-title">Associate Professor Cognitive Science Department</div>
+      <a class="member-link" href="https://faculty.rpi.edu/mei-si" target="_blank">Profile</a>
+    </div>
+    <!-- Faculty 3 -->
+    <div class="member-card">
+      <div class="member-photo">
+        <svg viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
+          <rect width="88" height="88" fill="#dde6d6"/>
+          <circle cx="44" cy="32" r="16" fill="#8aaa8a"/>
+          <ellipse cx="44" cy="74" rx="24" ry="18" fill="#8aaa8a"/>
+        </svg>
+      </div>
+      <div class="member-name">Prof. Kristin Bennett</div>
+      <div class="member-title">Associate Director of the Institute for Data Exploration and Application (IDEA) and a Professor in the Mathematical Sciences and Computer Science</div>
+      <a class="member-link" href="https://faculty.rpi.edu/kristin-bennett" target="_blank">Profile</a>
+    </div>
+    <!-- Faculty 4 -->
+    <div class="member-card">
+      <div class="member-photo">
+        <svg viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
+          <rect width="88" height="88" fill="#e8ddd6"/>
+          <circle cx="44" cy="32" r="16" fill="#b59d8a"/>
+          <ellipse cx="44" cy="74" rx="24" ry="18" fill="#b59d8a"/>
+        </svg>
+      </div>
+      <div class="member-name">Dr. Oshani Seneviratne</div>
+      <div class="member-title">Assistant Professor, Computer Science</div>
+      <a class="member-link" href="https://faculty.rpi.edu/oshani-seneviratne" target="_blank">Profile</a>
+    </div>
+  </div>
+
+  <div class="team-role-label" style="margin-top:32px">Graduate Students</div>
+  <div class="student-grid">
+    <!-- Student 1 -->
+    <div class="member-card">
+      <div class="member-photo">
+        <svg viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
+          <rect width="88" height="88" fill="#e4ddf0"/>
+          <circle cx="44" cy="32" r="16" fill="#9a88bb"/>
+          <ellipse cx="44" cy="74" rx="24" ry="18" fill="#9a88bb"/>
+        </svg>
+      </div>
+      <div class="member-name">Sirajam Munira</div>
+      <div class="member-title">PhD Candidate, Computer Science</div>
+      <a class="member-link" href="https://bd.linkedin.com/in/munirs" target="_blank">Profile</a>
+    </div>
+    <!-- Student 2 -->
+    <div class="member-card">
+      <div class="member-photo">
+        <svg viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
+          <rect width="88" height="88" fill="#ddf0e4"/>
+          <circle cx="44" cy="32" r="16" fill="#88bb9a"/>
+          <ellipse cx="44" cy="74" rx="24" ry="18" fill="#88bb9a"/>
+        </svg>
+      </div>
+      <div class="member-name">Priscilla Wong</div>
+      <div class="member-title">Undergraduate Student, ITWS, Lally School of Management</div>
+      <a class="member-link" href="https://www.linkedin.com/in/wongp4" target="_blank">Profile</a>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- SECTION 4: FUNDING -->
+<section id="funding" style="max-width:none; padding:70px 5%; background: var(--bg-alt);">
+  <div class="inner">
+    <div class="section-number">04 — Acknowledgements & Funding</div>
+    <h2>Funding Acknowledgement</h2>
+    <p class="funding-body">
+      This research is currently supported by Google.com via EMPIRE AI (CUNY). 
+    </p>
+    <p class="funding-body">
+      The authors gratefully acknowledge the access to high performance computing resources at RPI. 
+    </p>
+  </div>
+</section>
+
+<footer>©Team@RPI - All rights reserved</footer>
+
+</body>
+</html>
